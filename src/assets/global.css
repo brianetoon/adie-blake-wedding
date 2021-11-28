@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+* {
+    font-family: 'mr-eaves-sans', sans-serif;
+}
+p {
+    font-size: 24px;
+    margin: 0;
+    padding: 0 10px;
+    margin-bottom: 24px;
+    line-height: 30px;
+}
+.nav-content {
+    max-width: 480px;
+    margin: 0 auto;
+}
