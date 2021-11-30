@@ -23,6 +23,10 @@ export default {
     padding: 20px 10px;
     background: white;
 }
+.nav-content {
+    max-width: 480px;
+    margin: 0 auto;
+}
 .navbar img {
     width: 100%;
     padding: 10px;

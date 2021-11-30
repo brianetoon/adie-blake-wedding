@@ -1,17 +1,67 @@
+/* Base Styles */
 body {
     margin: 0;
 }
 * {
     font-family: 'mr-eaves-sans', sans-serif;
+    font-weight: 300;
 }
 p {
-    font-size: 24px;
+    font-size: 20px;
     margin: 0;
     padding: 0 10px;
     margin-bottom: 24px;
-    line-height: 30px;
+    line-height: 24px;
 }
-.nav-content {
-    max-width: 480px;
-    margin: 0 auto;
+.content {
+    padding: 20px 25px;
+}
+
+/* Image Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+    padding: 10px 0;
+}
+.grid-image img {
+    display: block;
+    width: 100%;
+}
+.grid-image {
+    grid-column: span 6;
+}
+
+
+/* Media Queries */
+@media screen and (min-width: 600px) {
+    .grid {
+        padding: 20px 0;
+    }
+    .grid-image {
+        grid-column: span 4;
+    }
+    .content {
+        padding: 25px 40px;
+    }
+    p {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .grid {
+        padding: 30px 0;
+    }
+    .grid-image {
+        grid-column: span 3;
+    }
+    .content {
+        padding: 25px 60px;
+    }
+    p {
+        font-size: 24px;
+        line-height: 28px;
+    }
 }
