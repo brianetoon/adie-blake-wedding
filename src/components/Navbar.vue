@@ -20,7 +20,7 @@ export default {
 <style>
 .navbar {
     text-align: center;
-    padding: 20px 10px;
+    padding: 20px;
     background: white;
 }
 .nav-content {

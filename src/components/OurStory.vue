@@ -26,7 +26,6 @@ export default {
 <style>
 .our-story {
     text-align: center;
-    /* background-color: #ced2fb; */
     background-color: #b5c4f5;
 }
 .our-story .title {
@@ -34,6 +33,6 @@ export default {
     padding: 10px;
     margin-left: 10px;
     box-sizing: border-box;
-    max-width: 220px;
+    max-width: 200px;
 }
 </style>
