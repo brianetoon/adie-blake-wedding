@@ -1,7 +1,7 @@
 <template>
     <div class="grid">
         <div class="grid-image" v-for="(image, index) in images" :key="index">
-            <img :src="require(`@/assets/images/${folder}/thumbnails/${image}`)"
+            <img :src="require(`@/assets/images/${folder}/thumbnails/${image.thumb}`)"
                 @click="handleClick(index)" >
         </div>
     </div>

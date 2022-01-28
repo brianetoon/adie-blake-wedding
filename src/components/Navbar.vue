@@ -1,47 +1,68 @@
 <template>
     <nav class="navbar">
-        <div class="nav-content">
-            <img src="@/assets/images/ab_text.png" alt="logo">
-            <ul class="links">
-                <li class="link">Our Story</li>
-                <li class="link">The Wedding</li>
-                <li class="link">Join Us</li>
-            </ul>
-        </div>
+        <ul class="links">
+            <li v-for="(link, i) in links" :key="i" class="link">
+                {{ link.name }}
+            </li>
+        </ul>
     </nav>
 </template>
 
 <script>
+import { ref } from '@vue/reactivity'
 export default {
+    setup() {
+        const links = ref([
+            { name: 'Our Story', anchor: '#' },
+            { name: 'The Wedding', anchor: '#' },
+            { name: 'Join Us', anchor: '#' },
+        ])
 
+        return { links }
+    }
 }
 </script>
 
 <style>
 .navbar {
-    text-align: center;
-    padding: 20px;
-    background: white;
+    padding: 10px;
+    background: var(--primary);
+    width: 100%;
+    margin: 0 auto;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
 }
-.nav-content {
-    max-width: 480px;
+.links {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
     margin: 0 auto;
 }
-.navbar img {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-ul.links {
-    padding: 10px 20px;
-    margin: 0;
-    display: flex;
-    list-style-type: none;
-    justify-content: space-between;
-}
-li.link {
+.link {
+    font-family: 'goldenbook', serif;
+    font-weight: 600;
+    font-size: 18px;
     text-transform: uppercase;
-    color: #4a5466;
-    font-size: 22px;
+    color: white;
+}
+@media screen and (min-width: 680px) {
+    .links {
+        max-width: 480px;
+    }
+    .link {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width: 900px) {
+    .links {
+        max-width: 500px;
+    }
+
 }
 </style>

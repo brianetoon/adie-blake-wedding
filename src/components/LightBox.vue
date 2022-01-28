@@ -1,12 +1,18 @@
 <template>
     <div class="backdrop">
-        <i class="material-icons close" @click="handleClose">clear</i>
-        <i class="material-icons back" @click="next(-1)">chevron_left</i>
-        <transition name="image" mode="out-in">
-            <img :src="require(`@/assets/images/${folder}/fullsize/${image}`)" 
-                :key="image">
-        </transition>
-        <i class="material-icons forward" @click="next(1)">chevron_right</i>
+        <div class="lightbox-wrap">
+        
+            <i class="material-icons close" @click="handleClose">clear</i>
+            <i class="material-icons back" @click="next(-1)">chevron_left</i>
+            <transition name="image" mode="out-in">
+                <img :src="require(`@/assets/images/${folder}/fullsize/${image.lqi}`)"
+                    :data-src="require(`@/assets/images/${folder}/fullsize/${image.hqi}`)"
+                    :key="image" class="lazyload">
+                <!-- <img :src="require(`@/assets/images/${folder}/fullsize/${image.hqi}`)" :key="image"> -->
+            </transition>
+            <i class="material-icons forward" @click="next(1)">chevron_right</i>
+
+        </div>
     </div>
 </template>
 
@@ -24,9 +30,9 @@ export default {
 
 <style>
 .backdrop {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; */
     position: fixed;
     top: 0;
     left: 0;
@@ -34,20 +40,32 @@ export default {
     height: 100%;
     background: rgba(0, 0, 0, 0.55);
 }
+.lightbox-wrap {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1020px;
+    margin: 0 auto
+}
 .backdrop img {
     position: relative;
-    margin: 0 auto;
     display: block;
     max-width: 80%;
     max-height: 80%;
     box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
 }
+i {
+    -webkit-tap-highlight-color: transparent;
+}
 i.material-icons {
-    position: absolute;
+    /* position: absolute; */
     cursor: pointer;
     color: white;
 }
 .close {
+    position: absolute;
     font-size: 32px;
     top: 5px;
     right: 5px;
