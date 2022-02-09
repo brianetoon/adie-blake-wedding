@@ -1,10 +1,11 @@
 <template>
   <main class="home">
-    <Banner title="Adrienne and Blake" class="main-banner" />
+    <Banner :content="story" />
     <Section :content="story" />
-    <Banner title="The Wedding" class="wedding-banner" />
+    <Banner :content="wedding" />
     <Section :content="wedding" />
-    <JoinUs />
+    <Banner :content="join" />
+    <Section :content="join" />
   </main>
 </template>
 
@@ -12,15 +13,15 @@
 import store from '@/store.js'
 import Banner from '../components/Banner.vue'
 import Section from '../components/Section.vue'
-import JoinUs from '../components/JoinUs.vue'
 
 export default {
-  components: { Banner, Section, JoinUs },
+  components: { Banner, Section },
   setup() {
     const story = store.story
     const wedding = store.wedding
+    const join = store.join
 
-    return { story, wedding }
+    return { story, wedding, join }
   }
 }
 </script>
