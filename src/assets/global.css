@@ -34,18 +34,38 @@ h2 {
     font-size: 38px;
     color: var(--primary);
     white-space: nowrap;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 p {
     font-size: 22px;
     line-height: 30px;
     font-weight: 300;
 }
+p:not(:last-child) {
+    margin-bottom: 25px;
+}
 section {
     margin: 30px auto 90px;
 }
 section:last-child {
     margin-bottom: 30px;
+}
+button {
+    color: var(--primary);
+    background: white;
+    border: 2px solid var(--primary);
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px auto;
+    padding: 10px 40px;
+    cursor: pointer;
+    max-width: 300px;
+    width: 100%;
+}
+button:hover {
+    background: var(--primary);
+    color: white;
 }
 .banner {
     height: 300px;
@@ -118,6 +138,10 @@ section:last-child {
     }
     section:last-child {
         margin-bottom: 80px;
+    }
+    button {
+        margin-top: 20px;
+        font-size: 24px;
     }
     .banner {
         height: 550px;
