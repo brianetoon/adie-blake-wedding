@@ -1,4 +1,6 @@
 <template>
+    <Modal @close="toggleModal" v-if="showingModal"/>
+
     <section id="join-us">
         <div class="join-text">
             <h2>{{ content.title }}</h2>
@@ -10,15 +12,12 @@
         <img src="../assets/images/join_us/adie_and_blake.webp" class="adie-and-blake">
         <img src="../assets/images/join_us/ab.png" class="ab-icon">
     </section>
-
-    <Modal @close="toggleModal" />
 </template>
 
 <script>
-import gsap from 'gsap'
 import Modal from './modal/Modal.vue'
 import { ref } from '@vue/reactivity'
-import { onMounted } from '@vue/runtime-core'
+import { watch } from '@vue/runtime-core'
 
 export default {
     props: ['content'],
@@ -26,28 +25,23 @@ export default {
     setup() {
         const showingModal = ref(false)
 
+        watch(showingModal, () => {
+            if (showingModal.value === true) {
+                document.body.classList.add('modal-open')
+            } else {
+                document.body.classList.remove('modal-open')
+            }
+        })
+
         const toggleModal = () => {
             if (showingModal.value === false) {
-                animation.play()
                 showingModal.value = true
             } else {
-                animation.reverse()
                 showingModal.value = false
             }
         }
 
-        let animation
-
-        onMounted(() => {
-            gsap.set('.backdrop', {scale:0, opacity:0})
-            gsap.set('.modal', {y:-300, opacity:0})
-            animation = gsap.timeline({paused:true, duration:0.3})
-                .set('.backdrop', {scale:1})
-                .to('.backdrop', {opacity:1})
-                .to('.modal', {y:0, opacity:1, ease:'back'}, '-=0.2')
-        })
-
-        return { toggleModal }
+        return { toggleModal, showingModal }
     }
 }
 </script>
@@ -75,6 +69,9 @@ export default {
     max-width: 180px;
     grid-column: span 2;
     margin: 0 auto;
+}
+.modal-open {
+  overflow: hidden;
 }
 
 @media screen and (min-width: 680px) {
