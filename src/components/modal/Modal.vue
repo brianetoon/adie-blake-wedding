@@ -4,7 +4,7 @@
             <i class="material-icons close" @click="handleClose">clear</i>
             <Transition name="fade" mode="out-in">
                 <EmailForm @success="handleSuccess" v-if="!success" />
-                <Success :name="firstName" :email="email" v-else />
+                <Success :contact="contact" v-else />
             </Transition>
         </div>
     </div>
@@ -21,8 +21,7 @@ export default {
     setup(props, { emit }) {
         const close = () => emit('close')
         const success = ref(false)
-        const firstName = ref('')
-        const email = ref('')
+        const contact = ref(null)
 
         let animation
 
@@ -38,13 +37,12 @@ export default {
                 .to('.modal', {y:0, opacity:1, ease:'back'}, '-=0.2')
         })
 
-        const handleSuccess = (_firstName, _email) => {
-            firstName.value = _firstName
-            email.value = _email
+        const handleSuccess = (_contact) => {
+            contact.value = _contact
             success.value = true
         }
 
-        return { handleClose, handleSuccess, success, firstName, email }
+        return { handleClose, handleSuccess, success, contact }
     }
 }
 </script>
@@ -57,7 +55,7 @@ export default {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    padding: 30px;
+    padding: 20px;
     display: flex;
     align-items: center;
 }
@@ -67,19 +65,20 @@ export default {
     background: white;
     border-radius: 10px;
     margin: 0 auto;
-    padding:  50px 30px 40px;
+    padding:  50px 15px 30px;
     position: relative;
 }
 .modal h2 {
     font-family: 'mr-eaves-sans', sans-serif;
     font-size: 46px;
+    white-space: normal;
 }
 .close {
     position: absolute;
     top: 15px;
     right: 15px;
     font-size: 30px;
-    color: grey;
+    color: gray;
     cursor: pointer;
 }
 .close:hover {
@@ -94,6 +93,15 @@ export default {
 .fade-leave-to,
 .fade-enter-from {
   opacity: 0;
+}
+
+@media screen and (min-width: 440px) {
+    .backdrop {
+        padding: 30px;
+    }
+    .modal {
+        padding: 50px 30px 40px;
+    }
 }
 
 @media screen and (min-width: 680px) {

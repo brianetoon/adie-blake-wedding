@@ -42,7 +42,7 @@ p {
     font-weight: 300;
 }
 p:not(:last-child) {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 section {
     margin: 30px auto 90px;
@@ -97,6 +97,9 @@ button:hover {
     p {
         font-size: 24px;
         line-height: 32px;
+    }
+    p:not(:last-child) {
+        margin-bottom: 25px;
     }
     section {
         margin: 50px auto 120px;
